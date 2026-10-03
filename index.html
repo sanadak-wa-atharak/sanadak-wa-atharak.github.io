@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>سندك وأثرك</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #F7F0E3; --ink: #0E3B3D; --muted: #3C5F60;
+  --card: #EADFC8; --field: #FFFFFF; --border: #CFC2A6;
+  --accent: #B94F32; --on-accent: #FFFFFF;
+  --deep: #0E3B3D; --on-deep: #F3DDB0; --on-deep-muted: #CDBE98;
+  --calm-bg: #0E3B3D; --calm-ink: #F3DDB0; --calm-muted: #CDBE98; --calm-card: #F7F0E3; --calm-card-ink: #0E3B3D;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A2B2D; --ink: #F3DDB0; --muted: #CDBE98;
+    --card: #12474A; --field: #0F3A3D; --border: #2A6064;
+    --accent: #C4553A; --on-accent: #FFFFFF;
+    --deep: #134A4D; --on-deep: #F3DDB0; --on-deep-muted: #CDBE98;
+    --calm-bg: #08262A; --calm-ink: #F3DDB0; --calm-muted: #CDBE98; --calm-card: #F7F0E3; --calm-card-ink: #0E3B3D;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A2B2D; --ink: #F3DDB0; --muted: #CDBE98;
+  --card: #12474A; --field: #0F3A3D; --border: #2A6064;
+  --accent: #C4553A; --on-accent: #FFFFFF;
+  --deep: #134A4D; --on-deep: #F3DDB0; --on-deep-muted: #CDBE98;
+  --calm-bg: #08262A; --calm-ink: #F3DDB0; --calm-muted: #CDBE98; --calm-card: #F7F0E3; --calm-card-ink: #0E3B3D;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+*, *::before, *::after { box-sizing: inherit; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Tajawal', system-ui, sans-serif; min-height: 100vh; transition: background .2s; }
+body.calm { background: var(--calm-bg); color: var(--calm-ink); }
+#app { max-width: 480px; margin: 0 auto; padding: 28px 22px 40px; display: flex; flex-direction: column; gap: 16px; }
+button, textarea { font-family: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.top { display: flex; align-items: center; gap: 12px; min-height: 48px; }
+.logo { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+.brand { font-size: 22px; font-weight: 700; }
+.title { font-size: 24px; font-weight: 700; margin: 0; }
+.back { width: 44px; height: 44px; border-radius: 50%; border: none; background: var(--card); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+body.calm .back { background: #1B5558; }
+.btn { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 60px; border-radius: 24px; font-size: 20px; font-weight: 700; border: 2px solid transparent; padding: 10px 16px; text-align: center; }
+.btn-accent { background: var(--accent); color: var(--on-accent); }
+.btn-big { min-height: 84px; font-size: 26px; }
+.btn-deep { background: var(--deep); color: var(--on-deep); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-sand { background: #F3DDB0; color: #0E3B3D; }
+.btn-link { background: transparent; color: inherit; text-decoration: underline; font-size: 17px; font-weight: 500; min-height: 48px; border: none; }
+.pair { display: flex; gap: 10px; }
+.pair .btn { min-height: 60px; font-size: 18px; padding: 10px 8px; }
+.btn-small { min-height: 44px; font-size: 16px; border-radius: 16px; width: auto; padding: 8px 18px; }
+.counter { text-align: start; display: flex; flex-direction: column; gap: 10px; align-items: stretch; background: var(--deep); color: var(--on-deep); border: none; border-radius: 24px; padding: 20px 24px; }
+.counter .lbl { font-size: 20px; font-weight: 700; }
+.counter .row { display: flex; align-items: baseline; justify-content: space-between; }
+.counter .num { font-size: 56px; font-weight: 700; line-height: 1; }
+.counter .unit { font-size: 18px; font-weight: 500; margin-inline-start: 10px; }
+.counter .more { font-size: 15px; font-weight: 500; }
+.card { background: var(--card); border-radius: 24px; padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; }
+.card h2 { margin: 0; font-size: 20px; }
+.meta { font-size: 14px; font-weight: 500; color: var(--muted); }
+.body { font-size: 18px; font-weight: 500; line-height: 1.6; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.seg { display: flex; gap: 10px; }
+.seg button { flex: 1; min-height: 52px; border-radius: 26px; font-size: 18px; font-weight: 700; border: 2px solid var(--ink); background: transparent; color: var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--deep); color: var(--on-deep); border-color: var(--deep); }
+label { font-size: 16px; font-weight: 500; }
+textarea { width: 100%; border-radius: 20px; border: 2px solid var(--border); background: var(--field); color: var(--ink); padding: 14px 16px; font-size: 17px; line-height: 1.6; resize: vertical; min-height: 120px; direction: rtl; }
+textarea.short { min-height: 84px; }
+.err { color: var(--accent); font-weight: 700; font-size: 16px; min-height: 22px; margin: 0; }
+.toast { background: var(--deep); color: var(--on-deep); border-radius: 16px; padding: 12px 18px; font-weight: 700; }
+.small-note { font-size: 13px; color: var(--muted); text-align: center; margin-top: 8px; }
+.calm .small-note, .calm .meta { color: var(--calm-muted); }
+.kicker { font-size: 18px; font-weight: 500; color: var(--calm-muted); margin: 12px 0 0; }
+.big { font-size: 34px; font-weight: 700; line-height: 1.35; margin: 0; }
+.calm-card { background: var(--calm-card); color: var(--calm-card-ink); border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+.calm-card .meta { color: #3C5F60; }
+.badge { display: inline-block; align-self: flex-start; background: #0E3B3D; color: #F3DDB0; border-radius: 14px; padding: 4px 12px; font-size: 14px; font-weight: 700; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.num-big { font-size: 72px; font-weight: 700; line-height: 1; }
+.num-row { display: flex; align-items: baseline; gap: 12px; }
+.section { font-size: 18px; font-weight: 700; margin: 8px 0 0; }
+.item { background: var(--field); border: 2px solid var(--border); border-radius: 20px; padding: 14px 18px; display: flex; flex-direction: column; gap: 6px; }
+.item .help { font-size: 16px; font-weight: 500; line-height: 1.5; color: var(--muted); margin: 0; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+(function () {
+  'use strict';
+  var KEY = 'sanadak_v1';
+  var LOGO = 'data:image/jpeg;base64,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';
+  var mem = null;
+  function load() {
+    try {
+      var r = localStorage.getItem(KEY);
+      if (r) { var d = JSON.parse(r); if (Array.isArray(d)) return d; }
+    } catch (e) {}
+    return mem || [];
+  }
+  var entries = load();
+  function persist() {
+    mem = entries;
+    try { localStorage.setItem(KEY, JSON.stringify(entries)); } catch (e) {}
+  }
+  function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+
+
+  var S = { view: 'home', kind: 'moment', status: 'passed', text: '', help: '', error: '', tab: 'challenges',
+            toast: '', memId: null, tiredId: null, markingId: null, markHelp: '', confirmDel: null };
+  var toastTimer = null;
+
+  function passedList() { return entries.filter(function (e) { return e.type === 'challenge' && e.status === 'passed'; }); }
+  function ongoingList() { return entries.filter(function (e) { return e.type === 'challenge' && e.status === 'ongoing'; }); }
+  function momentList() { return entries.filter(function (e) { return e.type === 'moment'; }); }
+  function newestFirst(a, b) { return (b.passedAt || b.createdAt) - (a.passedAt || a.createdAt); }
+  function byId(id) { for (var i = 0; i < entries.length; i++) if (entries[i].id === id) return entries[i]; return null; }
+  function rand(list, excludeId) {
+    if (!list.length) return null;
+    var pool = list.filter(function (x) { return x.id !== excludeId; });
+    if (!pool.length) pool = list;
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  function ago(ts) {
+    var d = Math.floor((Date.now() - ts) / 86400000);
+    if (d <= 0) return 'النهارده';
+    if (d === 1) return 'إمبارح';
+    if (d === 2) return 'من يومين';
+    if (d <= 10) return 'من ' + d + ' أيام';
+    if (d < 30) { var w = Math.round(d / 7); return w === 1 ? 'من أسبوع' : (w === 2 ? 'من أسبوعين' : 'من ' + w + ' أسابيع'); }
+    if (d < 365) { var m = Math.floor(d / 30); if (m === 1) return 'من شهر'; if (m === 2) return 'من شهرين'; return m <= 10 ? 'من ' + m + ' شهور' : 'من ' + m + ' شهر'; }
+    var y = Math.floor(d / 365);
+    return y === 1 ? 'من سنة' : (y === 2 ? 'من سنتين' : 'من ' + y + ' سنين');
+  }
+
+  function h(tag, props) {
+    var e = document.createElement(tag);
+    props = props || {};
+    for (var k in props) {
+      var v = props[k];
+      if (v == null || v === false) continue;
+      if (k === 'class') e.className = v;
+      else if (k.indexOf('on') === 0) e.addEventListener(k.slice(2), v);
+      else if (k === 'text') e.textContent = v;
+      else e.setAttribute(k, v === true ? '' : v);
+    }
+    for (var i = 2; i < arguments.length; i++) {
+      var c = arguments[i];
+      if (c == null || c === false) continue;
+      if (Array.isArray(c)) { for (var j = 0; j < c.length; j++) if (c[j]) e.appendChild(c[j]); }
+      else e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    }
+    return e;
+  }
+
+  function backBtn(target) {
+    var b = h('button', { class: 'back', type: 'button', 'aria-label': 'رجوع', onclick: function () { go(target); } });
+    b.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+    return b;
+  }
+
+  function go(view) {
+    S.view = view; S.error = ''; S.markingId = null; S.confirmDel = null;
+    if (view === 'home') { var m = rand(momentList()); S.memId = m ? m.id : null; }
+    if (view === 'tired') { var t = rand(passedList()); S.tiredId = t ? t.id : null; }
+    render();
+    window.scrollTo(0, 0);
+  }
+  function showToast(msg) {
+    S.toast = msg; render();
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { S.toast = ''; if (S.view === 'home') render(); }, 2600);
+  }
+
+  /* ---------- views ---------- */
+  function viewHome() {
+    var n = passedList().length;
+    var mem = S.memId ? byId(S.memId) : null;
+    return [
+      h('div', { class: 'top' }, h('img', { class: 'logo', src: LOGO, alt: 'شعار سندك وأثرك' }), h('div', { class: 'brand', text: 'سندك وأثرك' })),
+      S.toast ? h('div', { class: 'toast', role: 'status', text: S.toast }) : null,
+      h('button', { class: 'counter', type: 'button', onclick: function () { S.tab = 'challenges'; go('list'); } },
+        h('div', { class: 'lbl', text: 'كل تحدي بيعدي' }),
+        h('div', { class: 'row' },
+          h('div', null, h('span', { class: 'num', text: String(n) }), h('span', { class: 'unit', text: 'تحدي عدّى' })),
+          h('div', { class: 'more', text: n ? 'شوفهم' : 'ابدأ' }))),
+      h('button', { class: 'btn btn-accent btn-big', type: 'button', onclick: function () { go('tired'); }, text: 'أنا تعبت 🤚🏻 ثواني' }),
+      h('div', { class: 'pair' },
+        h('button', { class: 'btn btn-ghost', type: 'button', onclick: function () { S.kind = 'challenge'; S.status = 'passed'; go('add'); }, text: 'سجّل تحدي' }),
+        h('button', { class: 'btn btn-ghost', type: 'button', onclick: function () { S.kind = 'moment'; go('add'); }, text: 'سجّل لحظة حلوة' })),
+      h('div', { class: 'card' },
+        h('h2', { text: 'لحظة متتنسيش' }),
+        mem
+          ? [h('p', { class: 'body', text: mem.text }), h('div', { class: 'meta', text: ago(mem.createdAt) })]
+          : h('p', { class: 'body', text: 'لما تسجّل لحظة حلوة، هتلاقيها هنا وتفكّرك بنفسها.' })),
+      h('div', { class: 'small-note', text: 'بياناتك محفوظة على موبايلك بس.' })
+    ];
+  }
+
+  function viewAdd() {
+    var isCh = S.kind === 'challenge';
+    var ta = h('textarea', { id: 'what', placeholder: isCh ? 'إيه اللي كان صعب؟' : 'اكتب بالتفاصيل، زي ما حصل', oninput: function (ev) { S.text = ev.target.value; } }, S.text);
+    var helpTa = h('textarea', { id: 'help', class: 'short', placeholder: 'جملة واحدة تفتكرها وقت التعب', oninput: function (ev) { S.help = ev.target.value; } }, S.help);
+    return [
+      h('div', { class: 'top' }, backBtn('home'), h('h1', { class: 'title', text: isCh ? 'سجّل تحدي' : 'سجّل لحظة حلوة' })),
+      h('label', { for: 'what', text: isCh ? 'إيه التحدي؟' : 'إيه اللي حصل؟' }), ta,
+      isCh ? h('div', { class: 'seg' },
+        h('button', { type: 'button', 'aria-pressed': String(S.status === 'passed'), onclick: function () { S.status = 'passed'; render(); }, text: 'عدّى' }),
+        h('button', { type: 'button', 'aria-pressed': String(S.status === 'ongoing'), onclick: function () { S.status = 'ongoing'; render(); }, text: 'لسه جاري' })) : null,
+      (isCh && S.status === 'passed') ? [h('label', { for: 'help', text: 'إيه اللي ساعدك تعدّي؟' }), helpTa] : null,
+      h('p', { class: 'err', role: 'alert', text: S.error }),
+      h('button', { class: 'btn btn-deep', type: 'button', onclick: saveEntry, text: 'احفظ' })
+    ];
+  }
+
+  function saveEntry() {
+    var t = S.text.trim();
+    if (!t) { S.error = 'اكتب الأول إيه اللي حصل.'; render(); return; }
+    var e = { id: uid(), type: S.kind, text: t, createdAt: Date.now() };
+
+    if (S.kind === 'challenge') {
+      e.status = S.status;
+      if (S.status === 'passed') { e.help = S.help.trim(); e.passedAt = Date.now(); }
+    }
+    entries.push(e); persist();
+    S.text = ''; S.help = ''; S.kind = 'moment'; S.status = 'passed';
+    go('home'); showToast('اتحفظت.');
+  }
+
+  function viewTired() {
+    var list = passedList();
+    var cur = S.tiredId ? byId(S.tiredId) : null;
+    var head = h('div', { class: 'top' }, backBtn('home'), h('h1', { class: 'title', text: 'أنا تعبت 🤚🏻 ثواني' }));
+    if (!cur) {
+      return [head,
+        h('p', { class: 'kicker', text: 'خد نفس.' }),
+        h('p', { class: 'big', text: 'لسه مفيش تحدي عدّى منه هنا.' }),
+        h('p', { class: 'body', text: 'سجّل أول تحدي عدّيت منه، وهيبقى هنا وقت ما تحتاجه.' }),
+        h('button', { class: 'btn btn-sand', type: 'button', onclick: function () { S.kind = 'challenge'; S.status = 'passed'; go('add'); }, text: 'سجّل تحدي عدّى' }),
+        h('button', { class: 'btn-link btn', type: 'button', onclick: function () { go('home'); }, text: 'رجوع' })];
+    }
+    return [head,
+      h('p', { class: 'kicker', text: 'خد نفس. افتكر:' }),
+      h('p', { class: 'big', text: 'انت عديت من ده قبل كده.' }),
+      h('div', { class: 'calm-card' },
+        h('span', { class: 'badge', text: 'تحدي عدّى' }),
+        h('p', { class: 'body', text: cur.text }),
+        cur.help ? h('p', { class: 'body', text: 'اللي ساعدني: ' + cur.help }) : null,
+        h('div', { class: 'meta', text: ago(cur.passedAt || cur.createdAt) })),
+      h('button', { class: 'btn btn-sand', type: 'button', onclick: function () { go('home'); }, text: 'أحسن دلوقتي' }),
+      list.length > 1 ? h('button', { class: 'btn btn-link', type: 'button', onclick: function () { var t = rand(list, S.tiredId); S.tiredId = t.id; render(); }, text: 'اعرض تحدي تاني' }) : null,
+      h('button', { class: 'btn btn-link', type: 'button', onclick: function () { S.tab = 'challenges'; go('list'); }, text: 'شوف كل اللي عديت منه' })
+    ];
+  }
+
+  function delButton(id) {
+    var sure = S.confirmDel === id;
+    return h('button', { class: 'btn btn-ghost btn-small', type: 'button',
+      onclick: function () {
+        if (S.confirmDel === id) { entries = entries.filter(function (x) { return x.id !== id; }); persist(); S.confirmDel = null; }
+        else S.confirmDel = id;
+        render();
+      }, text: sure ? 'تأكيد المسح' : 'مسح' });
+  }
+
+  function viewList() {
+    var isCh = S.tab === 'challenges';
+    var out = [
+      h('div', { class: 'top' }, backBtn('home'), h('h1', { class: 'title', text: 'كل تحدي بيعدي' })),
+      h('div', { class: 'seg' },
+        h('button', { type: 'button', 'aria-pressed': String(isCh), onclick: function () { S.tab = 'challenges'; S.confirmDel = null; render(); }, text: 'التحديات' }),
+        h('button', { type: 'button', 'aria-pressed': String(!isCh), onclick: function () { S.tab = 'moments'; S.confirmDel = null; render(); }, text: 'اللحظات' }))
+    ];
+    if (isCh) {
+      var passed = passedList().sort(newestFirst), ongoing = ongoingList().sort(newestFirst);
+      out.push(h('div', { class: 'num-row' }, h('div', { class: 'num-big', text: String(passed.length) }), h('div', { class: 'brand', text: 'تحدي عدّى' })));
+      if (ongoing.length) {
+        out.push(h('p', { class: 'section', text: 'لسه جاري' }));
+        ongoing.forEach(function (e) {
+          var marking = S.markingId === e.id;
+          out.push(h('div', { class: 'item' },
+            h('p', { class: 'body', text: e.text }),
+            h('div', { class: 'meta', text: ago(e.createdAt) }),
+            marking ? [
+              h('label', { for: 'mh', text: 'إيه اللي ساعدك تعدّي؟' }),
+              h('textarea', { id: 'mh', class: 'short', placeholder: 'جملة واحدة تفتكرها وقت التعب', oninput: function (ev) { S.markHelp = ev.target.value; } }, S.markHelp),
+              h('div', { class: 'actions' },
+                h('button', { class: 'btn btn-deep btn-small', type: 'button', onclick: function () { e.status = 'passed'; e.help = S.markHelp.trim(); e.passedAt = Date.now(); S.markingId = null; S.markHelp = ''; persist(); render(); }, text: 'عدّى' }),
+                h('button', { class: 'btn btn-ghost btn-small', type: 'button', onclick: function () { S.markingId = null; render(); }, text: 'إلغاء' }))
+            ] : h('div', { class: 'actions' },
+              h('button', { class: 'btn btn-accent btn-small', type: 'button', onclick: function () { S.markingId = e.id; S.markHelp = ''; render(); }, text: 'عدّى' }),
+              delButton(e.id))));
+        });
+      }
+      if (passed.length) {
+        out.push(h('p', { class: 'section', text: 'عدّى' }));
+        passed.forEach(function (e) {
+          out.push(h('div', { class: 'item' },
+            h('p', { class: 'body', text: e.text }),
+            e.help ? h('p', { class: 'help', text: 'اللي ساعدني: ' + e.help }) : null,
+            h('div', { class: 'meta', text: ago(e.passedAt || e.createdAt) }),
+            h('div', { class: 'actions' }, delButton(e.id))));
+        });
+      }
+      if (!passed.length && !ongoing.length) out.push(h('p', { class: 'body', text: 'لسه مفيش تحديات. سجّل أول واحد.' }));
+      out.push(h('button', { class: 'btn btn-accent', type: 'button', onclick: function () { S.kind = 'challenge'; S.status = 'passed'; go('add'); }, text: 'سجّل تحدي' }));
+    } else {
+      var ms = momentList().sort(newestFirst);
+      if (!ms.length) out.push(h('p', { class: 'body', text: 'لسه مفيش لحظات. سجّل أول لحظة حلوة.' }));
+      ms.forEach(function (e) {
+        out.push(h('div', { class: 'item' },
+          h('p', { class: 'body', text: e.text }),
+          h('div', { class: 'meta', text: ago(e.createdAt) }),
+          h('div', { class: 'actions' }, delButton(e.id))));
+      });
+      out.push(h('button', { class: 'btn btn-accent', type: 'button', onclick: function () { S.kind = 'moment'; go('add'); }, text: 'سجّل لحظة حلوة' }));
+    }
+    return out;
+  }
+
+  function render() {
+    var app = document.getElementById('app');
+    while (app.firstChild) app.removeChild(app.firstChild);
+    var v = S.view === 'add' ? viewAdd() : S.view === 'tired' ? viewTired() : S.view === 'list' ? viewList() : viewHome();
+    (function add(list) {
+      list.forEach(function (n) {
+        if (!n) return;
+        if (Array.isArray(n)) add(n); else app.appendChild(n);
+      });
+    })(v);
+    document.body.className = S.view === 'tired' ? 'calm' : '';
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>
