@@ -1,8 +1,11 @@
 [{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "com.sanadakwaatharak.app",
-        "sha256_cert_fingerprints": ["38:85:FA:34:FD:DE:9D:4B:9E:57:D0:C0:2C:92:30:BA:42:C0:D6:06:0F:BC:11:DE:F5:FA:DD:47:4A:AC:82:8A"]
-      }
-    }]
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.sanadakwaatharak.app",
+    "sha256_cert_fingerprints": [
+      "5F:41:A8:53:11:8C:D8:E5:B9:44:7E:85:EE:3B:5C:65:D6:2A:3A:7A:C9:1D:6A:12:9C:95:A9:D9:56:31:37:07",
+      "38:85:FA:34:FD:DE:9D:4B:9E:57:D0:C0:2C:92:30:BA:42:C0:D6:06:0F:BC:11:DE:F5:FA:DD:47:4A:AC:82:8A"
+    ]
+  }
+}]
